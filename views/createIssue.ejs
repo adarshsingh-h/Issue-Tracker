@@ -1,0 +1,22 @@
+<%- include('partials/head') %>
+<form id="create-issue" action="/create-issue/<%= id %>" method="post">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" />
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" />
+
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" />
+
+    <label for="label">Labels</label>
+    <input type="checkbox" name="label" id="label" value="Functional">Functional</input>
+    <input type="checkbox" name="label" id="label" value="Logical">Logical</input>
+    <input type="checkbox" name="label" id="label" value="Workflow">Workflow</input>
+    <input type="checkbox" name="label" id="label" value="Unit Level">Unit Level</input>
+    <input type="checkbox" name="label" id="label" value="System-Level Integration">System-Level Integration</input>
+    <input type="checkbox" name="label" id="label" value="Out of Bound">Out of Bound</input>
+
+    <button type="submit">Create</button>
+</form>
+<%- include('partials/end') %>

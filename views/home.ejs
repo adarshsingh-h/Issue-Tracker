@@ -1,0 +1,11 @@
+<%- include('partials/head') %>
+    <% for(let project of projects) { %>
+        <div>
+                <p>Title: <%=project.title%></p>
+                <p>Description: <%=project.description%></p>
+                <p>Author: <%=project.author%></p>
+                <a href="/project-details/<%=project._id%>">More Information</a>
+        </div>
+    <% } %>
+    <a id="create-project" href="/create">Create Project</a>
+<%- include('partials/end') %>

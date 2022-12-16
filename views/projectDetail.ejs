@@ -1,0 +1,50 @@
+<%- include('partials/head') %>
+    <h1>Project Details</h1>
+    <p><strong>Title:</strong> <%=project.title%></p>
+    <p><strong>Description:</strong> <%=project.description%></p>
+    <p><strong>Author:</strong> <%=project.author%></p>
+    <h3>Issues</h3>
+    <a href="/create-issue/<%= project._id %>">Create Issue</a>
+    <div id="filters">
+        <form method="post" action="/filter-by-title/<%= project._id %>">
+            <p id="headingS"><strong>Filter By Title and Description</strong></p>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description">
+            <button type="submit">Filter</button>
+        </form>
+        <form method="post" action="/filter-by-author/<%= project._id %>">
+            <p id="headingS"><strong>Filter By Author</strong></p>
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author">
+            <button type="submit">Filter</button>
+        </form>
+        <div id="checkbox">
+            <form method="post" action="/filter-by-label/<%= project._id %>">
+                <p id="headingS"><strong>Filter By Labels</strong></p>
+                <label for="label">Labels</label>
+                <div id="labels">
+                    <input type="checkbox" name="label" id="label" value="Functional">Functional</input>
+                    <input type="checkbox" name="label" id="label" value="Logical">Logical</input>
+                    <input type="checkbox" name="label" id="label" value="Workflow">Workflow</input>
+                    <input type="checkbox" name="label" id="label" value="Unit Level">Unit Level</input>
+                    <input type="checkbox" name="label" id="label" value="System-Level Integration">System-Level Integration</input>
+                    <input type="checkbox" name="label" id="label" value="Out of Bound">Out of Bound</input>
+                </div>
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+    </div>
+    <a id="create-filter" href="/clear/<%= project._id %>">Clear Filter</a>
+    <div id="issues">
+        <% for(let issue of issues) {%>
+            <p><strong>Title: </strong><%=issue.title%></p>
+            <p><strong>Description: </strong> <%=issue.description%></p>
+            <p><strong>Author: </strong> <%=issue.author%></p>
+            <p><strong>Labels:</strong></p>
+            <% for(let i of issue.label) { %>
+                <div><%= i %></div>
+            <% } } %>
+    </div>
+<%- include('partials/end') %>
